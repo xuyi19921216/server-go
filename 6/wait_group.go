@@ -78,4 +78,5 @@ func TestGetAllErr(t *testing.T) {
 	}
 	// 主协程阻塞，等待所有的任务执行完成
 	wg.Wait()
+
 }
