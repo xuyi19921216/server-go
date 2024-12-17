@@ -75,7 +75,7 @@ func storeValueInRedis(ctx context.Context, key string, value []byte, chunkSize 
 		if err != nil {
 			return err
 		}
-		meta = MetaInfo{IsBigKey: true, Keys: keys}
+		meta = MetaInfo{IsBigKey: true, Keys: keys, Data: nil}
 	}
 	metaByte, err := json.Marshal(meta)
 	if err != nil {
