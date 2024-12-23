@@ -1,6 +1,7 @@
 package main
 
 import (
+	"server-go/18/generics"
 	"server-go/18/reflection"
 	"server-go/18/regular"
 	"testing"
@@ -17,5 +18,12 @@ func BenchmarkRegular(b *testing.B) {
 func BenchmarkReflection(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		reflection.Max(1, 2)
+	}
+}
+
+// 泛型实现的最大值函数benchmark
+func BenchmarkGenerics(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		generics.Max(1, 2)
 	}
 }
