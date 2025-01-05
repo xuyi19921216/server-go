@@ -42,3 +42,40 @@ func TestAddWithConvey(t *testing.T) {
 		})
 	})
 }
+
+// 测试函数
+func TestNonTableDriven(t *testing.T) {
+	// 测试用例1
+	assert := assert.New(t)
+	result := Add(1, 2)
+	assert.Equal(result, 3, "add(1, 2) should return 3")
+
+	// 测试用例2
+	result = Add(-1, 1)
+	assert.Equal(result, 0, "add(-1, 1) should return 0")
+
+	// 测试用例3
+	result = Add(0, 0)
+	assert.Equal(result, 0, "add(0, 0) should return 0")
+}
+
+func TestTableDriven(t *testing.T) {
+	tests := []struct {
+		name     string
+		inputA   int
+		inputB   int
+		expected int
+	}{
+		{"Add positive numbers", 1, 2, 3},
+		{"Add negative numbers", -1, 1, 0},
+		{"Add zero", 0, 0, 0},
+		// 更多测试用例...
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := Add(tt.inputA, tt.inputB)
+			assert.Equal(t, tt.expected, result, "结果不符合期望")
+		})
+	}
+}
