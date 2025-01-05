@@ -1,0 +1,9 @@
+mode: set
+server-go/21/add.go:4.24,6.2 1 1
+server-go/21/main.go:3.14,5.2 0 0
+server-go/21/user_info.go:9.49,11.16 2 0
+server-go/21/user_info.go:11.16,13.3 1 0
+server-go/21/user_info.go:14.2,15.30 2 0
+server-go/21/user_info.go:19.51,22.16 3 1
+server-go/21/user_info.go:22.16,24.3 1 0
+server-go/21/user_info.go:25.2,25.26 1 1
