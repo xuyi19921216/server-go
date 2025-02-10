@@ -83,20 +83,22 @@ func storeValueInRedis(ctx context.Context, key string, value []byte, chunkSize 
 	}
 	// 获取原来的数据元信息
 	oldMetaByte, err := redisClient.Get(ctx, key).Bytes()
-	if err != nil {
+	if err != nil && err != redis.Nil {
 		return err
 	}
 	_, err = redisClient.Set(ctx, key, metaByte, 0).Result()
 	if err != nil {
 		return err
 	}
-	var oldMetaInfo MetaInfo
-	err = json.Unmarshal(oldMetaByte, &oldMetaInfo)
-	if err != nil {
-		return err
-	}
-	if oldMetaInfo.IsBigKey {
-		// 获取旧key,设置旧key过期时间，比如说10分钟，防止服务端还有旧数据在读
+	if len(oldMetaByte) > 0 {
+		var oldMetaInfo MetaInfo
+		err = json.Unmarshal(oldMetaByte, &oldMetaInfo)
+		if err != nil {
+			return err
+		}
+		if oldMetaInfo.IsBigKey {
+			// 获取旧key,设置旧key过期时间，比如说10分钟，防止服务端还有旧数据在读
+		}
 	}
 	return nil
 }
